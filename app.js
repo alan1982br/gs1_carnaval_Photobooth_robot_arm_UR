@@ -95,13 +95,17 @@ $(document).ready(function () {
   })
 
   $('.back').click(voltar)
+  $('.back').fadeOut();
 
   initCam();
 
   // PRÓXIMA TELA
   function nextStep(step) {
+  
     currentStep = step
+   console.log(currentStep)
     $('#step' + (step - 1)).fadeOut(() => {
+     
       $('#step' + step).fadeIn()
       if (step === 2) {
         $('.video-output').fadeIn(function () {
@@ -114,6 +118,13 @@ $(document).ready(function () {
     if (step === 3) {
       startCounter()
     }
+   
+    if (step === 8) {
+      $('.back').fadeIn();
+    }else{
+      $('.back').fadeOut();
+    }
+
   }
 
   // INCIAR COUNTER PARA GRAVAÇÃO
@@ -162,6 +173,7 @@ $(document).ready(function () {
         console.log('erro', errorThrown);
       }
     });
+ 
   })
 
   // fim do counter
@@ -186,9 +198,11 @@ $(document).ready(function () {
   // VOLTAR AO INICIO
   function voltar() {
     $('.mail-input').val('')
+    $('.back').fadeOut();
     // Se o stream de video estiver aparecendo, esconder ele
     if (currentStep > 1 && currentStep < 6) {
       $('.video-output').fadeOut()
+     
     }
     $('#step' + currentStep).fadeOut(function () {
       $('#step1').fadeIn()
@@ -329,7 +343,10 @@ $(document).ready(function () {
           contentType: 'application/x-www-form-urlencoded',
           success: function (data, textStatus, jQxhr) {
             console.log('zapi success');
+           
             nextStep(8)
+        
+          
           },
           error: function (jqXhr, textStatus, errorThrown) {
             console.log('zapi erro', errorThrown);
