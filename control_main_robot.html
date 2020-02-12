@@ -1,0 +1,193 @@
+<!--
+// Muaz Khan     - www.MuazKhan.com
+// MIT License   - www.WebRTC-Experiment.com/licence
+// Experiments   - github.com/muaz-khan/RecordRTC
+-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>RecordRTC </title>
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+    <link rel="stylesheet" href="css/main.css">
+    <meta name="author" content="Muaz Khan">
+
+    <style>
+        html {
+            background-color: #f7f7f7;
+        }
+
+
+        hr {
+            border: 0;
+            /* border-top: 1px solid rgb(15, 158, 238); */
+        }
+
+        a {
+            color: #2844FA;
+            text-decoration: none;
+        }
+
+        a:hover,
+        a:focus {
+            color: #1B29A4;
+        }
+
+        a:active {
+            color: #000;
+        }
+    </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div id="container">
+        <h1>CONTROL DASHBOARD ROBOT ARM</h1>
+        <hr />
+
+        <div>
+            <h3>INIT ROBOT</h3>
+            <button id="btn-power-on">POWER ON</button>
+            <button id="btn-power-off">POWER OFF</button>
+            <button id="btn-brake-release">BRAKE RELEASE</button>
+            <button id="btn-shutdown">shutdown</button>
+        </div>
+        <hr />
+        <div>
+            <h3>CONTROL PROGRAM</h3>
+            <button id="btn-load">Load Program</button>
+            <button id="btn-play-Program">Play Program</button>
+            <button id="btn-stop-Program">Stop Program</button>
+        </div>
+
+    </div>
+
+    <h1></h1></br></br>
+    <h1>CONTROL ROBOT Position</h1>
+    <button id="btn-dance">Default Dança</button>
+    <button id="btn-home">Home</button>
+    <button id="btn-position-move_1">Start Position 1</button>
+    <button id="btn-position-move_2">Start Position 2</button>
+    <button id="btn-position-move_3">Start Position 3</button>
+    </div>
+    </div>
+
+
+    <script>
+
+        // POST request
+        var request = new XMLHttpRequest();
+
+
+        // fetching DOM references
+
+        //__________CONTROL DASHBOARD ROBOT ARM________________________________
+        var btnPowerOn = document.querySelector('#btn-power-on');
+        var btnPowerOff = document.querySelector('#btn-power-off');
+        var btnBrakeRelease = document.querySelector('#btn-brake-release');
+        var btnShutdown = document.querySelector('#btn-shutdown');
+
+        var btnLoadProgram = document.querySelector('#btn-load');
+        var btnPlayProgram = document.querySelector('#btn-play-Program');
+        var btnStopProgram = document.querySelector('#btn-stop-Program');
+
+        // reusable helpers
+        // UI events handling
+
+        //__________CONTROL DASHBOARD UI events________________________________
+        btnPowerOn.onclick = function (e) {
+            sendPostControl(e.srcElement.id)
+            console.log(e.srcElement.id);
+
+        };
+
+        btnPowerOff.onclick = function (e) {
+            sendPostControl(e.srcElement.id)
+            console.log(e.srcElement.id);
+        };
+
+        btnBrakeRelease.onclick = function (e) {
+            sendPostControl(e.srcElement.id)
+            console.log(e.srcElement.id);
+        };
+        
+        btnShutdown.onclick = function (e) {
+            sendPostControl(e.srcElement.id)
+            console.log(e.srcElement.id);
+        };
+
+        //__________CONTROL PROGRAM UI events________________________________
+
+        btnLoadProgram.onclick = function (e) {
+            sendPostControl(e.srcElement.id)
+            console.log(e.srcElement.id);
+        };
+
+        btnPlayProgram.onclick = function (e) {
+            sendPostControl(e.srcElement.id)
+            console.log(e.srcElement.id);
+        };
+
+        btnStopProgram.onclick = function (e) {
+            sendPostControl(e.srcElement.id)
+            console.log(e.srcElement.id);
+        };
+
+
+        //__________CONTROL ROBOT Position________________________________
+        var btnDance = document.querySelector('#btn-dance');
+        var btnHome = document.querySelector('#btn-home');
+        var btnbtnPositionMove1 = document.querySelector('#btn-position-move_1');
+        var btnbtnPositionMove2 = document.querySelector('#btn-position-move_2');
+        var btnbtnPositionMove3 = document.querySelector('#btn-position-move_3');
+
+        //__________CONTROL PROGRAM UI events________________________________
+
+        btnDance.onclick = function (e) {
+            sendPostControl(e.srcElement.id)
+            console.log(e.srcElement.id);;
+        };
+
+        btnHome.onclick = function (e) {
+            sendPostControl(e.srcElement.id)
+            console.log(e.srcElement.id);
+        };
+
+        btnbtnPositionMove1.onclick = function (e) {
+            sendPostControl(e.srcElement.id)
+            console.log(e.srcElement.id);;
+        };
+
+        btnbtnPositionMove2.onclick = function (e) {
+            sendPostControl(e.srcElement.id)
+            console.log(e.srcElement.id);
+        };
+
+        btnbtnPositionMove3.onclick = function (e) {
+            sendPostControl(e.srcElement.id)
+            console.log(e.srcElement.id);
+
+        };
+
+        function sendPostControl(type) {
+            
+            request.open('POST', 'control_robot');
+            request.send(type);
+        }
+ 
+        // window.onbeforeunload = function () {
+        //     startRecording.disabled = false;
+        // };
+
+    </script>
+    <footer style="width:100%;position: fixed; right: 0; text-align: center;color:red;">
+        <h2 id="footer-h2"></h2>
+    </footer>
+</body>
+
+</html>

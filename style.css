@@ -1,0 +1,496 @@
+@font-face {
+  font-family: GothamOffice-Bold;
+  src: url('fonts/GothamOffice-Bold.ttf');
+}
+
+@font-face {
+  font-family: GothamOffice-Regular;
+  src: url('fonts/GothamOffice-Regular.ttf');
+}
+
+body,
+html {
+  color: #fff;
+  user-select: none;
+}
+
+.simple-keyboard {
+  width: 50%;
+  /* height: 30%; */
+ 
+  background-color: transparent !important;
+  margin-top: auto;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  color: black;
+  font-weight: bold;
+}
+
+.logo-gs1 {
+  position: absolute;
+  height: 90px;
+  top: 60px;
+  left: 60px;
+}
+
+.back {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 165px;
+  /* display: none; */
+}
+
+.app {
+  background-color: #002c6c;
+  background-image: url('imgs/bg-top-r.png'), url('imgs/bg-bottom-l.png');
+  background-position: right top, left bottom;
+  background-repeat: no-repeat, no-repeat;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  display: flex;
+}
+
+.app.bg-green {
+  background-color: #18b060;
+}
+
+.step {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.step.show {
+  display: flex;
+}
+
+.step.transition {
+  opacity: 1;
+}
+
+.mail-instruction {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-family: GothamOffice-Regular !important;
+  top: 18%;
+  font-size: 52px;
+  text-align: center;
+}
+
+#telefone {
+  width: 50%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: transparent;
+  color: white;
+  font-family: GothamOffice-Regular !important;
+  top: 37%;
+  font-size: 52px;
+  text-align: center;
+  border: none;
+  background-image: none;
+  background-color: transparent;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  border-bottom: 2px solid white;
+  padding: 20px;
+}
+
+input:focus {
+  outline: 0;
+}
+
+.counter {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  display: flex;
+  margin: auto;
+  background-color: #f05587;
+}
+
+.counter h1 {
+  margin: auto;
+  display: block;
+  font-size: 220px;
+  font-family: GothamOffice-Bold !important;
+}
+
+.fade {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  position: absolute;
+  z-index: 99;
+  display: flex;
+}
+
+.pop-up {
+  margin: auto;
+  background-color: #002c6c;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+  height: 50%;
+}
+
+.pop-up-instruction {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  margin-bottom: 100px;
+  color: white;
+  font-family: GothamOffice-Regular !important;
+  top: 25%;
+  font-size: 42px;
+  text-align: center;
+}
+
+.pop-up-email-confirm {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: auto;
+  color: white;
+  font-family: GothamOffice-Bold !important;
+  top: 25%;
+  font-size: 36px;
+  text-align: center;
+}
+
+.button {
+  width: 200px;
+  height: 200px;
+  display: flex;
+  border-radius: 50%;
+}
+
+.button.start {
+  position: absolute;
+  transform: translateY(-50%);
+  background-color: #18b060;
+  border-radius: 50% 0 0 50%;
+  right: 0;
+  top: 50%;
+}
+
+.button.start-record {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  background-color: #18b060;
+  border-radius: 50%;
+  left: 50%;
+  top: 50%;
+  z-index: 9999;
+}
+
+.button.confirm {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  background-color: #18b060;
+  border-radius: 50%;
+  right: -200px;
+  top: 50%;
+}
+
+.button.deny {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  background-color: #f36c41;
+  border-radius: 50%;
+  left: 0;
+  top: 50%;
+}
+
+.button.recording {
+  background-color: #f36c41;
+  position: relative;
+  margin: auto;
+}
+
+.button.repeat {
+  background-color: #fbb034;
+  position: relative;
+  margin: auto;
+}
+
+.button.like {
+  background-color: #18b060;
+  position: relative;
+  margin: auto;
+}
+
+.button.sent {
+  background-color: #fff;
+  position: relative;
+  margin: auto;
+}
+
+.button > img {
+  margin: auto;
+}
+
+.button > .text {
+  position: absolute;
+  transform: translate(-50%, 100%);
+  left: 50%;
+  bottom: -30px;
+  font-size: 48px;
+  font-family: GothamOffice-Regular !important;
+  width: max-content;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.text-recording {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+  font-size: 48px;
+  font-family: GothamOffice-Regular !important;
+  width: max-content;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.button.start > .text {
+  position: absolute;
+  transform: translate(-100%, -50%);
+  left: -30px;
+  top: 50%;
+  height: max-content;
+  font-size: 18px;
+  font-family: GothamOffice-Regular !important;
+  width: max-content;
+  text-align: right;
+  line-height: 1.2;
+}
+
+.bold {
+  font-family: GothamOffice-Bold !important;
+}
+
+.yellow {
+  color: #fbb034;
+}
+
+.green {
+  color: #18b060;
+}
+
+.text-small {
+  font-size: 24px;
+}
+.text-big {
+  font-size: 36px;
+}
+
+.third {
+  width: calc(100% / 3);
+  display: flex;
+}
+
+.camera {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.camera > video {
+  object-fit: cover;
+  width: -webkit-fill-available;
+}
+
+.hg-button {
+  height: 65px !important;
+}
+
+/* RESET */
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.video-output {
+  position: absolute;
+  width: 100vh;
+  transform: translate(-50%, 38%) rotate(270deg);
+  left: 50%;
+  top: 0;
+  transform-origin: center;
+}
+
+.video-recorded {
+  position: absolute;
+  width: 99vh;
+  transform: rotate(270deg) translate(-22.0%, -98%);
+  left: 50%;
+}
+
+.dial-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 90px);
+  grid-template-rows: repeat(4, 90px);
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  position: absolute;
+  bottom: 7%;
+  right: 50%;
+  transform: translateX(50%);
+}
+
+.dial-grid div {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 2px solid white;
+  line-height: 90px;
+  text-align: center;
+  font-size: 36px;
+  transition: background-color 0.1s, color 0.1s;
+}
+
+.dial-grid div:active {
+  background-color: #fff;
+  color: #002c6c;
+}

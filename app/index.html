@@ -1,0 +1,173 @@
+<html>
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simple-keyboard@latest/build/css/index.css">
+    <link rel="stylesheet" href="style.css" />
+    
+  </head>
+
+  <body>
+    <!-- ********* Acrescentar a class green a div abaixo na etapa final *********** -->
+    <div class="app">
+      <img class="logo-gs1" src="imgs/logo-gs1.png" />
+      <img class="back" src="imgs/voltar.png" />
+
+      <!-- <video class="video-output" autoplay="autoplay" loop style="display: none;">
+        <source src="video.mp4" type="video/mp4" />
+      </video> -->
+   
+      <video class="video-output" style="display: none;"> </video>
+
+      <!-- HOME -->
+      <div class="step" id="step1">
+        <!-- popup -->
+        <div class="fade" style="display: none;">
+          <div class="pop-up">
+            <div class="pop-up-instruction">
+              Confirme seu email<br />para iniciar
+            </div>
+            <div class="pop-up-email-confirm">
+              testedeemailgs1brasil@hotmail.com.br
+            </div>
+            <div class="button confirm"><img src="imgs/ok.png" /></div>
+            <div class="button deny"><img src="imgs/back-icon.png" /></div>
+          </div>
+        </div>
+        
+        <div class="mail-instruction">Insira seu email<br />para iniciar</div>
+        <!--<input class="mail-input" type="email" name="email" value="alan@venosadesign.com.br" autocomplete="off"/>-->
+        <input
+          type="text"
+          id="telefone"
+          name="phone"
+          placeholder="(11) 91234-5678"
+        />
+        <div id="input-text">
+        <div class="dial-grid">
+          <div class="number">1</div>
+          <div class="number">2</div>
+          <div class="number">3</div>
+          <div class="number">4</div>
+          <div class="number">5</div>
+          <div class="number">6</div>
+          <div class="number">7</div>
+          <div class="number">8</div>
+          <div class="number">9</div>
+          <div class="clear">X</div>
+          <div class="number">0</div>
+          <div class="backspace">&xlarr;</div>
+        </div>]
+      </div>
+        
+        <div class="button start next" data-step="2">
+          <img src="imgs/ok.png" />
+          <div class="text">CONTINUAR</div>
+        </div>
+        <div class="simple-keyboard"></div>
+      </div>
+
+      <!-- START CAPTURE -->
+      <div class="step" id="step2" style="display: none;">
+        <div class="third camera">
+          <div class="button start-record next" data-step="3">
+            <img src="imgs/camera.png" />
+            <div class="text">
+              <span class="text-small">INICIAR<br />CAPTURA</span>
+            </div>
+          </div>
+          <!--
+          <video autoplay="autoplay" loop>
+            <source src="video.mp4" type="video/mp4" />
+          </video>
+          -->
+        </div>
+      </div>
+
+      <!-- COUNTER -->
+      <div class="step" id="step3" style="display: none;">
+        <div class="third camera">
+          <div class="counter"><h1 id="c">3</h1></div>
+          <!--
+          <video autoplay="autoplay" loop>
+            <source src="video.mp4" type="video/mp4" />
+          </video>
+          -->
+        </div>
+      </div>
+
+      <!-- RECORDING -->
+      <div class="step" id="step4" style="display: none;">
+        <div class="third camera">
+          <div class="text-recording">Gravando...</div>
+          <!--
+          <video autoplay="autoplay" loop>
+            <source src="video.mp4" type="video/mp4" />
+          </video>
+          -->
+        </div>
+      </div>
+
+      <div class="step" id="step5" style="display: none;">
+        <div class="third camera">
+          <div class="text-recording">Carregando...</div>
+        </div>
+      </div>
+
+      <!-- CHECK -->
+      <div class="step" id="step6" style="display: none;">
+        <div class="third">
+          <div class="button repeat">
+            <img src="imgs/repeat.png" />
+            <div class="text">
+              <span class="bold yellow text-big">Não gostei.</span>
+              <br />
+              <span class="text-small">Repetir captura.</span>
+            </div>
+          </div>
+        </div>
+        <div class="third camera">
+          <video id="recorded" class="" autoplay="autoplay" loop>
+            <!-- <source src="video.mp4" type="video/mp4" /> -->
+          </video>
+        </div>
+        <div class="third">
+          <div class="button like">
+            <img src="imgs/like.png" />
+            <div class="text">
+              <span class="bold green text-big">Gostei!</span>
+              <br />
+              <span class="text-small">Enviar para meu email.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEND -->
+      <div class="step" id="step7" style="display: none;">
+        <div class="third camera">
+          <div class="text-recording">Enviando vídeo...</div>
+        </div>
+      </div>
+
+      <div class="step" id="step8" style="display: none;">
+        <div class="button sent">
+          <img src="imgs/sent.png" />
+          <div class="text">Vídeo enviado com sucesso!</div>
+        </div>
+      </div>
+    </div>
+
+    <script src="libs/jquery.min.js"></script>
+    <script src="libs/keyboard-simple.min.js"></script>
+    <script src="../node_modules/recordrtc/RecordRTC.js"> </script>
+
+    <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-storage.js"></script>
+
+    <script src="app.js"></script>
+  </body>
+</html>
