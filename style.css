@@ -488,6 +488,7 @@ table {
   text-align: center;
   font-size: 36px;
   transition: background-color 0.1s, color 0.1s;
+  font-family: GothamOffice-Regular !important;
 }
 
 .dial-grid div:active {

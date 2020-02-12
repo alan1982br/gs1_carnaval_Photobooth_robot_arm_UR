@@ -1,3 +1,6 @@
+const OFFLINE_MODE = false
+
+
 $(document).ready(function () {
 
   // KEeyboard
@@ -327,37 +330,41 @@ $(document).ready(function () {
   var request_url;
 
   function sendVideo (url, _numero, _nameFileUpload) {
-    var storageRef = storage.ref(`videos/${_nameFileUpload}`);
-    var url;
-    storageRef.put(currentBlob).then(function(snapshot) {
-      snapshot.ref.getDownloadURL().then(function (url) {
-        console.log('uploaded file!!!', _nameFileUpload)
-        request_url = url
-        let message = encodeURIComponent(url)
-        // let numero = _numero || '5511998684578' ||  '5511982049111' || '5521990481715' 
-        let numero = _numero;
-        $.ajax({
-          url: `http://localhost:8000/send-message/${message}/${numero}`,
-          dataType: 'text',
-          type: 'post',
-          contentType: 'application/x-www-form-urlencoded',
-          success: function (data, textStatus, jQxhr) {
-            console.log('zapi success');
-           
-            nextStep(8)
-        
-          
-          },
-          error: function (jqXhr, textStatus, errorThrown) {
-            console.log('zapi erro', errorThrown);
-            currentStep = 6
-            $('#step7').fadeOut(() => {
-              $('#step6').fadeIn()
-            })
-          }
-        });
-      })
-    });
+    // OFFLINE MODE
+    if (OFFLINE_MODE) {
+      console.log('OFFLINE MODE ----- no upload')
+      setTimeout(() => {
+        nextStep(8)
+      }, 2000)
+    } else {
+      var storageRef = storage.ref(`videos/${_nameFileUpload}`);
+      storageRef.put(currentBlob).then(function(snapshot) {
+        snapshot.ref.getDownloadURL().then(function (url) {
+          console.log('uploaded file!!!', _nameFileUpload)
+          request_url = url
+          let message = encodeURIComponent(url)
+          // let numero = _numero || '5511998684578' ||  '5511982049111' || '5521990481715' 
+          let numero = _numero;
+          $.ajax({
+            url: `http://localhost:8000/send-message/${message}/${numero}`,
+            dataType: 'text',
+            type: 'post',
+            contentType: 'application/x-www-form-urlencoded',
+            success: function (data, textStatus, jQxhr) {
+              console.log('zapi success');
+              nextStep(8)
+            },
+            error: function (jqXhr, textStatus, errorThrown) {
+              console.log('zapi erro', errorThrown);
+              currentStep = 6
+              $('#step7').fadeOut(() => {
+                $('#step6').fadeIn()
+              })
+            }
+          });
+        })
+      });
+    }
   }
 
   var firebaseConfig = {
@@ -442,7 +449,7 @@ $(document).ready(function () {
       // request.open('POST', 'convert');
       // request.send();
 
-   current_user_data = {
+    current_user_data = {
         email: emailRequest || 'dev@venosadesign.com.br',
         numero: currentNumero,
         fileUpload: filename,

@@ -214,10 +214,14 @@ try {
             break;
        
     }
-    
-} catch (error) {
-    console.log(error)
-}
+        
+    } catch (error) {
+        console.log(error)
+        request.on('data', function(data) {
+            typeAction += data
+            console.log('typeAction ' , typeAction)
+        });
+    }
            
            
         })
