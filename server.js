@@ -606,16 +606,35 @@ appSqlLite.post('/send-message/:url/:phone', (req, res) => {
     let phone = req.params.phone
     let link = basepath + encodeURIComponent((req.params.url).replace(firehost, ''))
     console.log('link', link)
-    let message = 'Segue aqui o link do vídeo: \n' + link
+    let message = 'Segue aqui o link do vídeo do Carnaval Conectado!'
     console.log('zapi request', phone, message)
+    
     axios.post(instanceAPI, {
         phone,
         message
     })
     .then(function (response) {
         // handle success
-        console.log('success');
-        res.status(200)
+        console.log('first success');
+        // res.status(200)
+        axios.post(instanceAPI, {
+            phone,
+            message: link
+        })
+        .then(function (response) {
+            // handle success
+            console.log('second success');
+            res.status(200)
+        })
+        .catch(function (error) {
+            // handle error
+            console.log('error');
+            res.status(400)
+        })
+        .then(function () {
+            // always executed
+            res.end()
+        });
     })
     .catch(function (error) {
         // handle error
@@ -624,6 +643,6 @@ appSqlLite.post('/send-message/:url/:phone', (req, res) => {
     })
     .then(function () {
         // always executed
-        res.end()
+        // res.end()
     });
 })

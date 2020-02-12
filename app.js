@@ -100,6 +100,8 @@ $(document).ready(function () {
   $('.back').click(voltar)
   $('.back').fadeOut();
 
+  $('#app').toggleClass('bg-green')
+
   initCam();
 
   // PRÓXIMA TELA
@@ -107,6 +109,7 @@ $(document).ready(function () {
   
     currentStep = step
    console.log(currentStep)
+   $('#app').toggleClass('bg-green')
     $('#step' + (step - 1)).fadeOut(() => {
      
       $('#step' + step).fadeIn()
@@ -202,6 +205,7 @@ $(document).ready(function () {
   function voltar() {
     $('.mail-input').val('')
     $('.back').fadeOut();
+    $('#app').toggleClass('bg-green');
     // Se o stream de video estiver aparecendo, esconder ele
     if (currentStep > 1 && currentStep < 6) {
       $('.video-output').fadeOut()
