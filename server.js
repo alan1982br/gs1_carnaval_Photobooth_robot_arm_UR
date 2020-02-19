@@ -74,7 +74,8 @@ var server = net.createServer(function (client) {
     })
 
 });
-server.listen(9001, '192.168.1.100');
+   server.listen(9001, '192.168.99.100');
+// server.listen(9001, '192.168.88.22');
 // Make the server a TCP server listening on port 9999.
 // Get server address info.
 var serverInfo = server.address();
@@ -94,10 +95,14 @@ server.on('error', function (error) {
 /*___________________________SERVER HTTP VIDEO_________________________________________*/
 var clientDashBoard = new net.Socket();
 
-clientDashBoard.connect(29999 , '192.168.1.47', function() {
+clientDashBoard.connect(29999 , '192.168.99.103', function() {
 	console.log('Connected');
      clientDashBoard.write('robotmode'+ "\n");
 });
+// clientDashBoard.connect(29999 , '192.168.88.44', function() {
+// 	console.log('Connected');
+//      clientDashBoard.write('robotmode'+ "\n");
+// });
 
 clientDashBoard.on('data', function(data) {
 	console.log('Received: ' + data);
@@ -195,7 +200,8 @@ try {
             clientDashBoard.write("stop" + "\n");
             break;
         case 'btn-load':
-            let command = 'load "venosa mq estados 4 cam.urp"';
+             let command = 'load "venosa mq estados 4 cam.urp"';
+            // let command = 'load "venosa mq estados 2.urp"';
             clientDashBoard.write(command + "\n");
             break;
         case 'btn-power-on':
@@ -606,7 +612,7 @@ appSqlLite.post('/send-message/:url/:phone', (req, res) => {
     let phone = req.params.phone
     let link = basepath + encodeURIComponent((req.params.url).replace(firehost, ''))
     console.log('link', link)
-    let message = 'Segue aqui o link do vídeo do Carnaval Conectado!'
+    let message = 'Obrigado por participar da Selfie 4.0 da GS1 Brasil! Poste seu video e use as #carnavalconectado e #temposmodernos';
     console.log('zapi request', phone, message)
     
     axios.post(instanceAPI, {

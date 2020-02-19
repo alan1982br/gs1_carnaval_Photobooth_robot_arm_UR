@@ -43,7 +43,7 @@ $(document).ready(function () {
   }
   
   var telefone = []
-
+ 
   $('.number').on('click', function () {
     if (telefone.length >= 11) return
     let number = parseInt($(this).text())
@@ -164,7 +164,7 @@ $(document).ready(function () {
   $('.button.like').click(function () {
     nextStep(7)
     sendVideo(request_url, currentNumero ,actualnameFileUpload);
-
+    
     $.ajax({
       url: 'http://localhost:8000/api/user/',
       dataType: 'text',
@@ -188,7 +188,7 @@ $(document).ready(function () {
     // TESTE PARA FINGIR QUE GRAVA POR 2 SEGUNDOS
     setTimeout(() => {
       onRecordingEnded()
-    }, 16000 )  // 14000
+    }, 17000 )  // 14000
     startRecord();
   }
 
@@ -233,7 +233,6 @@ $(document).ready(function () {
 
   let recordedBlobs;
  
-
   var mediaStream = null;
   // reusable getUserMedia
   function captureUserMedia(success_callback) {
@@ -243,13 +242,12 @@ $(document).ready(function () {
           // chromeMediaSource: 'screen',
           // minWidth: 1280,
           // minHeight: 720,
-
           maxWidth: 1920,
           maxHeight: 1080,
-
+          
           // minFrameRate: 3,
           // maxFrameRate: 32,
-
+       
           minAspectRatio: 1.77
         },
         optional: []
@@ -437,32 +435,21 @@ $(document).ready(function () {
       nextStep(6);
       initRecorded(filenameConvert);
 
-      // console.log('fileBlob', fileBlob)
+      // console.log('fileBlob', fileBlob)OFFLINE_MODE
 
       console.info('fileURL', fileURL);
       console.info(' xhr filename', filename, filenameConvert, dateRequest, currentNumero);
-      
-      // videoElement.src = fileURL;
-      // videoElement.play();
-      // videoElement.muted = false;
-      // videoElement.controls = true;
-
-
-      //CONVERT_VIDEO________________________________________
-      // var request = new XMLHttpRequest();
-      // request.open('POST', 'convert');
-      // request.send();
+ 
 
     current_user_data = {
-        email: emailRequest || 'dev@venosadesign.com.br',
+        // email: emailRequest || 'dev@venosadesign.com.br',
+        email:   OFFLINE_MODE ? 'offLine@offLine.com.br' : 'dev@venosadesign.com.br',
         numero: currentNumero,
         fileUpload: filename,
         fileConvert: filenameConvert,
         date: dateRequest
       }
-
-    
-  
+ 
       // setTimeout(function(){ 
         // nextStep(6);
         // initRecorded(filenameConvert);
