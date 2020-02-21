@@ -1,0 +1,28 @@
+ Program
+   Robot Program
+     Danca
+       Loop Video≟ False 
+         MoveJ
+           Waypoint_1
+           Waypoint_2
+           Waypoint_3
+           Waypoint_4
+           Waypoint_5
+           Waypoint_6
+           Waypoint_7
+           Waypoint_8
+           Waypoint_9
+           Waypoint_10
+       stopj(2)
+     Rotina Video
+       MoveJ
+         inicio_do_filme
+         Set DO[1]=On
+         'Wait'
+         esquerda
+         giro_esq
+         centro_bx
+         Direita
+         alto
+       Set vid_fim=On
+       Set DO[1]=Off

@@ -1,0 +1,90 @@
+ Program
+   BeforeStart
+     comm≔ False 
+     interrupt≔ False 
+     vid_com≔[0,0,0]
+     Sel≔999
+     Start≔999
+     video≔ False 
+     Loop comm≟ False 
+       comm≔socket_open("192.168.99.100",9001)
+     socket_send_string("conexao aberta")
+   Robot Program
+     MoveJ
+       inicio_do_filme
+       socket_send_string("home_0")
+       Wait Start≟1 or Start≟2
+       If Start≟2
+         Danca
+           socket_send_string("danca_1")
+           Loop Start≠0
+             MoveJ
+               Waypoint_1
+               Waypoint_2
+               Waypoint_3
+               Waypoint_4
+               Waypoint_5
+               Waypoint_6
+               Waypoint_7
+               Waypoint_8
+               Waypoint_9
+               Waypoint_10
+           stopj(2)
+           socket_send_string("interromper_danca")
+       ElseIf Start≟1
+         If Start≠0
+           interrupt≔ True 
+           Switch Sel
+             Case 1
+               Rotina Video 1
+                 MoveJ
+                   socket_send_string("start_video_1")
+                   frente_giro
+                   frente_giro2
+                   frente_giro3
+                   dir_alto
+                   esq_alto
+                   centro_bx
+                   inicio_do_filme
+                   interrupt≔ False 
+                   socket_send_string("fim_video_1")
+                   Wait Start≟0
+             Case 2
+               Rotina Video 2
+                 MoveJ
+                   socket_send_string("start_video_2")
+                   frente_giro
+                   frente_giro3
+                   esq_alto
+                   dir_baixo
+                   centro_bx
+                   inicio_do_filme
+                   interrupt≔ False 
+                   socket_send_string("fim_video_2")
+                   Wait Start≟0
+             Case 3
+               Rotina Video 3
+                 MoveJ
+                   socket_send_string("start_video_3")
+                   frente_giro
+                   frente_giro2
+                   frente_giro3
+                   Waypoint_11
+                   dir_alto
+                   esq_baixo
+                   centro_bx
+                   Waypoint_12
+                   inicio_do_filme
+                   interrupt≔ False 
+                   socket_send_string("fim_video_3")
+                   Wait Start≟0
+         stopj(2)
+         If interrupt
+           socket_send_string("interromper_video")
+   Thread_1
+     vid_com≔socket_read_ascii_float(2)
+     If vid_com[0]≟2
+       Start≔vid_com[1]
+       Sel≔vid_com[2]
+       vid_com≔[0,0,0]
+     sync()
